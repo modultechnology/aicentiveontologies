@@ -1,0 +1,130 @@
+
+# Explanation Ontology
+# http://modultech.eu/aicentive/explanation#
+@prefix expl: <http://modultech.eu/aicentive/explanation#> .
+@prefix mob: <http://modultech.eu/aicentive/mobility#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+expl: a owl:Ontology ;
+    dcterms:title "Explainability Ontology for AI Predictions" ;
+    dcterms:description "An ontology for representing explainability data and reasoning for AI-generated predictions" ;
+    dcterms:creator "ModulTech AI-Centive Project" ;
+    dcterms:created "2025-01-01"^^xsd:date ;
+    dcterms:modified "2025-01-01"^^xsd:date ;
+    owl:versionInfo "1.0" ;
+    rdfs:seeAlso <http://modultech.eu/aicentive/mobility#> .
+
+# Explanation Classes
+expl:PredictionExplanation a owl:Class ;
+    rdfs:label "Prediction Explanation" ;
+    rdfs:comment "Explainability information for an AI prediction including reasoning and evidence" ;
+    rdfs:subClassOf prov:Entity .
+
+expl:PatternEvidence a owl:Class ;
+    rdfs:label "Pattern Evidence" ;
+    rdfs:comment "Historical pattern evidence supporting a prediction explanation" ;
+    rdfs:subClassOf prov:Entity .
+
+# Object Properties
+expl:hasPatternEvidence a owl:ObjectProperty ;
+    rdfs:label "has pattern evidence" ;
+    rdfs:comment "Links an explanation to its supporting pattern evidence" ;
+    rdfs:domain expl:PredictionExplanation ;
+    rdfs:range expl:PatternEvidence .
+
+# Data Properties - Textual Explanation
+expl:explanationText a owl:DatatypeProperty ;
+    rdfs:label "explanation text" ;
+    rdfs:comment "Human-readable textual explanation of the prediction reasoning" ;
+    rdfs:domain expl:PredictionExplanation ;
+    rdfs:range xsd:string .
+
+expl:confidenceLevel a owl:DatatypeProperty ;
+    rdfs:label "confidence level" ;
+    rdfs:comment "Categorical confidence level (High, Medium, Low)" ;
+    rdfs:domain expl:PredictionExplanation ;
+    rdfs:range xsd:string .
+
+# Data Properties - Pattern Frequencies
+expl:routeFrequency a owl:DatatypeProperty ;
+    rdfs:label "route frequency" ;
+    rdfs:comment "Number of times this specific route has been taken historically" ;
+    rdfs:domain expl:PatternEvidence ;
+    rdfs:range xsd:integer .
+
+expl:timeFrequency a owl:DatatypeProperty ;
+    rdfs:label "time frequency" ;
+    rdfs:comment "Number of trips at this specific hour historically" ;
+    rdfs:domain expl:PatternEvidence ;
+    rdfs:range xsd:integer .
+
+expl:dayFrequency a owl:DatatypeProperty ;
+    rdfs:label "day frequency" ;
+    rdfs:comment "Number of trips on this day type (weekday/weekend) historically" ;
+    rdfs:domain expl:PatternEvidence ;
+    rdfs:range xsd:integer .
+
+expl:activityFrequency a owl:DatatypeProperty ;
+    rdfs:label "activity frequency" ;
+    rdfs:comment "Proportion (0-1) of trips using this activity type historically" ;
+    rdfs:domain expl:PatternEvidence ;
+    rdfs:range xsd:float .
+
+# Confidence Level Enumeration
+expl:ConfidenceLevel a owl:Class ;
+    rdfs:label "Confidence Level" ;
+    rdfs:comment "Categorical confidence levels for prediction explanations" .
+
+expl:HighConfidence a expl:ConfidenceLevel ;
+    rdfs:label "High" ;
+    rdfs:comment "High confidence level (typically >= 0.7)" .
+
+expl:MediumConfidence a expl:ConfidenceLevel ;
+    rdfs:label "Medium" ;
+    rdfs:comment "Medium confidence level (typically 0.3-0.7)" .
+
+expl:LowConfidence a expl:ConfidenceLevel ;
+    rdfs:label "Low" ;
+    rdfs:comment "Low confidence level (typically < 0.3)" .
+
+# Property Constraints and Axioms
+# Confidence score constraints
+[] a owl:Restriction ;
+    owl:onProperty mob:hasConfidence ;
+    owl:allValuesFrom [ a rdfs:Datatype ;
+                       owl:onDatatype xsd:float ;
+                       owl:withRestrictions ( [ xsd:minInclusive 0.0 ]
+                                            [ xsd:maxInclusive 1.0 ] ) ] .
+
+[] a owl:Restriction ;
+    owl:onProperty mob:hasNewRouteConfidence ;
+    owl:allValuesFrom [ a rdfs:Datatype ;
+                       owl:onDatatype xsd:float ;
+                       owl:withRestrictions ( [ xsd:minInclusive 0.0 ]
+                                            [ xsd:maxInclusive 1.0 ] ) ] .
+
+# Activity frequency constraints
+[] a owl:Restriction ;
+    owl:onProperty expl:activityFrequency ;
+    owl:allValuesFrom [ a rdfs:Datatype ;
+                       owl:onDatatype xsd:float ;
+                       owl:withRestrictions ( [ xsd:minInclusive 0.0 ]
+                                            [ xsd:maxInclusive 1.0 ] ) ] .
+
+# Frequency constraints (non-negative integers)
+[] a owl:Restriction ;
+    owl:onProperty expl:routeFrequency ;
+    owl:allValuesFrom [ a rdfs:Datatype ;
+                       owl:onDatatype xsd:integer ;
+                       owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] .
+
+[] a owl:Restriction ;
+    owl:onProperty expl:timeFrequency ;
+    owl:allValuesFrom [ a rdfs:Datatype ;
+                       owl:onDatatype xsd:integer ;
+                       owl:withRestrictions ( [ xsd:minInclusive 0 ] ) ] .

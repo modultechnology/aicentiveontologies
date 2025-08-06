@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModulTech AI-Centive Ontologies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .ontology-section {
+            background: white;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .ontology-header {
+            background-color: #495057;
+            color: white;
+            padding: 1rem 1.5rem;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        .ontology-info {
+            padding: 1rem 1.5rem;
+            background-color: #e9ecef;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .ontology-info p {
+            margin: 0.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        th {
+            background-color: #6c757d;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        .category-header {
+            background-color: #495057 !important;
+            color: white !important;
+            font-weight: bold;
+            text-align: center;
+        }
+        .code {
+            font-family: 'Courier New', monospace;
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .type-class { color: #d73502; font-weight: bold; }
+        .type-property { color: #0969da; font-weight: bold; }
+        .type-datatype { color: #8250df; }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .license {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+        .namespace-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ModulTech AI-Centive Ontologies</h1>
+        <p>Semantic vocabularies for explainable mobility predictions</p>
+    </div>
+
+    <div class="namespace-box">
+        <h3>📍 Namespace URIs</h3>
+        <p><strong>Mobility Ontology:</strong> <span class="code">http://modultech.eu/aicentive/mobility#</span></p>
+        <p><strong>Explanation Ontology:</strong> <span class="code">http://modultech.eu/aicentive/explanation#</span></p>
+    </div>
+
+    <div class="license">
+        <h3>📄 License</h3>
+        <p>These ontologies are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></p>
+        <p>You are free to share and adapt these ontologies with appropriate attribution.</p>
+    </div>
+
+    <!-- Mobility Ontology -->
+    <div class="ontology-section">
+        <h2 class="ontology-header">Mobility Ontology</h2>
+        <div class="ontology-info">
+            <p><strong>Purpose:</strong> Represents AI-generated trip predictions with confidence scores and user associations</p>
+            <p><strong>Namespace:</strong> <span class="code">http://modultech.eu/aicentive/mobility#</span></p>
+            <p><strong>Prefix:</strong> <span class="code">mob:</span></p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%">Category</th>
+                    <th style="width: 35%">URI</th>
+                    <th style="width: 15%">Type</th>
+                    <th style="width: 35%">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4" class="category-header">CLASSES</td></tr>
+                <tr>
+                    <td>Core</td>
+                    <td><span class="code">mob:TripPrediction</span></td>
+                    <td><span class="type-class">owl:Class</span></td>
+                    <td>AI-generated trip prediction</td>
+                </tr>
+                <tr>
+                    <td>Core</td>
+                    <td><span class="code">mob:User</span></td>
+                    <td><span class="type-class">owl:Class</span></td>
+                    <td>System user</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:ActivityType</span></td>
+                    <td><span class="type-class">owl:Class</span></td>
+                    <td>Activity type enumeration</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:BikeActivity</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Bicycle activity instance</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:WalkActivity</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Walking activity instance</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:CarDriverActivity</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Car driving activity instance</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:CarRiderActivity</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Car passenger activity instance</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:PublicTransitActivity</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Public transit activity instance</td>
+                </tr>
+
+                <tr><td colspan="4" class="category-header">OBJECT PROPERTIES</td></tr>
+                <tr>
+                    <td>Association</td>
+                    <td><span class="code">mob:hasUser</span></td>
+                    <td><span class="type-property">owl:ObjectProperty</span></td>
+                    <td>Links prediction to user</td>
+                </tr>
+                <tr>
+                    <td>Association</td>
+                    <td><span class="code">mob:hasExplanation</span></td>
+                    <td><span class="type-property">owl:ObjectProperty</span></td>
+                    <td>Links prediction to explanation</td>
+                </tr>
+
+                <tr><td colspan="4" class="category-header">DATA PROPERTIES</td></tr>
+                <tr>
+                    <td>Location</td>
+                    <td><span class="code">mob:hasOrigin</span></td>
+                    <td><span class="type-datatype">xsd:string</span></td>
+                    <td>Origin postal code</td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td><span class="code">mob:hasDestination</span></td>
+                    <td><span class="type-datatype">xsd:string</span></td>
+                    <td>Destination postal code</td>
+                </tr>
+                <tr>
+                    <td>Activity</td>
+                    <td><span class="code">mob:hasActivity</span></td>
+                    <td><span class="type-datatype">xsd:string</span></td>
+                    <td>Activity type</td>
+                </tr>
+                <tr>
+                    <td>Prediction</td>
+                    <td><span class="code">mob:hasPredictedDistance</span></td>
+                    <td><span class="type-datatype">xsd:float</span></td>
+                    <td>Predicted distance (meters)</td>
+                </tr>
+                <tr>
+                    <td>Prediction</td>
+                    <td><span class="code">mob:hasPredictedDuration</span></td>
+                    <td><span class="type-datatype">xsd:float</span></td>
+                    <td>Predicted duration (minutes)</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">mob:hasConfidence</span></td>
+                    <td><span class="type-datatype">xsd:float</span></td>
+                    <td>Confidence score (0-1)</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">mob:hasNewRouteConfidence</span></td>
+                    <td><span class="type-datatype">xsd:float</span></td>
+                    <td>New route confidence (0-1)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Explanation Ontology -->
+    <div class="ontology-section">
+        <h2 class="ontology-header">Explanation Ontology</h2>
+        <div class="ontology-info">
+            <p><strong>Purpose:</strong> Represents explainability data and reasoning for AI-generated predictions</p>
+            <p><strong>Namespace:</strong> <span class="code">http://modultech.eu/aicentive/explanation#</span></p>
+            <p><strong>Prefix:</strong> <span class="code">expl:</span></p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%">Category</th>
+                    <th style="width: 35%">URI</th>
+                    <th style="width: 15%">Type</th>
+                    <th style="width: 35%">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4" class="category-header">CLASSES</td></tr>
+                <tr>
+                    <td>Core</td>
+                    <td><span class="code">expl:PredictionExplanation</span></td>
+                    <td><span class="type-class">owl:Class</span></td>
+                    <td>Explanation for AI prediction</td>
+                </tr>
+                <tr>
+                    <td>Core</td>
+                    <td><span class="code">expl:PatternEvidence</span></td>
+                    <td><span class="type-class">owl:Class</span></td>
+                    <td>Historical pattern evidence</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">expl:ConfidenceLevel</span></td>
+                    <td><span class="type-class">owl:Class</span></td>
+                    <td>Confidence level enumeration</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">expl:HighConfidence</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>High confidence instance (≥0.7)</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">expl:MediumConfidence</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Medium confidence instance (0.3-0.7)</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">expl:LowConfidence</span></td>
+                    <td><span class="type-class">Instance</span></td>
+                    <td>Low confidence instance (&lt;0.3)</td>
+                </tr>
+
+                <tr><td colspan="4" class="category-header">OBJECT PROPERTIES</td></tr>
+                <tr>
+                    <td>Association</td>
+                    <td><span class="code">expl:hasPatternEvidence</span></td>
+                    <td><span class="type-property">owl:ObjectProperty</span></td>
+                    <td>Links explanation to evidence</td>
+                </tr>
+
+                <tr><td colspan="4" class="category-header">DATA PROPERTIES</td></tr>
+                <tr>
+                    <td>Text</td>
+                    <td><span class="code">expl:explanationText</span></td>
+                    <td><span class="type-datatype">xsd:string</span></td>
+                    <td>Human-readable explanation</td>
+                </tr>
+                <tr>
+                    <td>Confidence</td>
+                    <td><span class="code">expl:confidenceLevel</span></td>
+                    <td><span class="type-datatype">xsd:string</span></td>
+                    <td>Categorical confidence</td>
+                </tr>
+                <tr>
+                    <td>Frequency</td>
+                    <td><span class="code">expl:routeFrequency</span></td>
+                    <td><span class="type-datatype">xsd:integer</span></td>
+                    <td>Route usage count (≥0)</td>
+                </tr>
+                <tr>
+                    <td>Frequency</td>
+                    <td><span class="code">expl:timeFrequency</span></td>
+                    <td><span class="type-datatype">xsd:integer</span></td>
+                    <td>Time pattern count (≥0)</td>
+                </tr>
+                <tr>
+                    <td>Frequency</td>
+                    <td><span class="code">expl:dayFrequency</span></td>
+                    <td><span class="type-datatype">xsd:integer</span></td>
+                    <td>Day pattern count (≥0)</td>
+                </tr>
+                <tr>
+                    <td>Frequency</td>
+                    <td><span class="code">expl:activityFrequency</span></td>
+                    <td><span class="type-datatype">xsd:float</span></td>
+                    <td>Activity proportion (0-1)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <h3>🔗 Integration & Usage</h3>
+        <p>These ontologies integrate with standard W3C vocabularies:</p>
+        <ul style="text-align: left; display: inline-block;">
+            <li><strong>PROV-O:</strong> Provenance tracking</li>
+            <li><strong>TIME:</strong> Temporal relationships</li>
+            <li><strong>FOAF:</strong> User representation</li>
+            <li><strong>OWL:</strong> Formal semantics</li>
+        </ul>
+        <p style="margin-top: 2rem;">
+            <strong>Version:</strong> 1.0 | 
+            <strong>Created:</strong> 2025 | 
+            <strong>ModulTech</strong>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            For questions or contributions, please contact the ModulTech team.
+        </p>
+    </div>
+</body>
+</html>
