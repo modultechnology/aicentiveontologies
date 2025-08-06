@@ -61,6 +61,15 @@ Under the following terms:
 If you use these ontologies in your research, please cite:
 
 ```
+Braşoveanu, A. M. P., Nixon, L. J. B., Scharl, A., Charwat, G., & Prünster, E. (2025).
+Explainable mobility prediction in urban transit zones. In *Semantics for Transportation -
+Sem4Tra 2025 @ SEMANTICS 2025 EU: 21st International Conference on Semantic Systems*
+(September 3–5, 2025, Vienna, Austria).
+```
+
+or alternatively
+
+```
 ModulTech AI-Centive Ontologies for Explainable Mobility Predictions
 Available at: https://github.com/[your-username]/[repo-name]
 License: CC BY 4.0
